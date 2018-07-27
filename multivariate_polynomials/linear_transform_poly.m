@@ -7,7 +7,7 @@ dim = size(P,2)-1;
 
 % find the new x1 and x2
 Px=cell(dim,1);
-for i=1:len(b)
+for i=1:length(b)
     C=[b(i),zeros(1,dim);A(i,:)',eye(dim)];
     Px{i}=C;
 end
@@ -23,5 +23,7 @@ for i=1:size(P,1)
    end
    p=scalar_multiply_polyND(c,p);
    AP=add_sub_polyND(AP,p,'add');
+   AP=simplify_polyND(AP);
 end
+
 
