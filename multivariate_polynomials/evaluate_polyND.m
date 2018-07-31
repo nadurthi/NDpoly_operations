@@ -4,8 +4,14 @@ function f=evaluate_polyND(P,x)
 % P: first column is always coeff, rest of the columns are power of the
 % x=x(:)';
 
+% 
+% P=vpa(P);
+% x=vpa(x);
 
+% f=evaluate_polyND2(P,x);
+% return
 
+%%
 nt=size(P,1);
 C=P(:,1);
 M=P(:,2:end);
@@ -20,10 +26,13 @@ if size(P,2)-1 ~= xc
     f=NaN;
     return;
 end
+% prod(repmat(x(1,:),nt,1).^M,2)
 f=zeros(size(x,1),1);
 for i=1:1:size(x,1)
-f(i)=sum(C.*prod(repmat(x(i,:),nt,1).^M,2));
+% f(i)=vpa(sum(C.*vpa(prod(vpa(repmat(x(i,:),nt,1).^M),2)) ));
+f(i)=(sum(C.*(prod((repmat(x(i,:),nt,1).^M),2)) ));
+% f(i)=vpa(sum(C.*prod(repmat(sym(x(i,:)),nt,1).^M,2) ));
 end
 
-
+% f
 end

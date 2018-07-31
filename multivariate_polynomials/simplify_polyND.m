@@ -20,7 +20,7 @@ end
 if length(p)~=length(unique(p))
     for m=unique(p)'
         ind=find(p==m);
-        P1(ind(1),1)=sum(P1(ind,1));
+        P1(ind(1),1)=(sum(P1(ind,1)));
         P1(ind(2:end),1)=0;
     end
     
@@ -33,8 +33,8 @@ if isempty(P1)==1
     P1=zeros(1,size(P1,2));
 end
 
-
-
+cols=2:(size(P1,2)-1);
+P1=sortrows(P1,cols);
 
 % [m1,d]=size(P1);
 % P=P1(1,:);
